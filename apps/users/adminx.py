@@ -66,6 +66,7 @@ class BannerAdmin(object):
     list_display = ['title', 'image', 'url', 'index', 'add_time']
     search_fields = ['title', 'image', 'url', 'index']
     list_filter = ['title', 'image', 'url', 'index', 'add_time']
+    model_icon = 'fa fa-clone'
 
 # 取消xadmin中自带user的注册
 from django.contrib.auth.models import User
