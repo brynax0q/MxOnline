@@ -158,7 +158,9 @@ EMAIL_USE_TLS = False
 EMAIL_FROM = "xq0x0q@163.com"
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
+
 # 上文的文件的目录
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')

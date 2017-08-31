@@ -35,7 +35,7 @@ function zy_Countdown(){
     if(zy_c_num<=0){
         zy_c_num=60;
         $(".sendE2").hide();
-        $(".sendE").show()
+        $(".sendE").show();
         return false;
     }
     setTimeout("zy_Countdown()",1000);
