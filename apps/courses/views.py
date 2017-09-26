@@ -11,7 +11,7 @@ from utils.mixin_utils import LoginRequiredMixin
 
 
 class CourseListView(View):
-    def get(self,request):
+    def get(self, request):
         all_courses = Course.objects.all().order_by("-add_time")
         hot_courses = Course.objects.all().order_by("-click_nums")[0:3]
 

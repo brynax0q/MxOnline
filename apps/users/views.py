@@ -81,7 +81,7 @@ class RegisterView(View):
 
             # 此处加入了邮箱验证的手段
             send_register_email(user_name, "register")
-            return render(request, "login.html")
+            return render(request, "send_success.html")
         else:
             # form表单验证失败，将错误信息传给前端
             return render(request, "register.html", {"register_form": register_form})
