@@ -155,7 +155,6 @@ class OrgDescView(View):
         })
 
 
-
 class OrgTeacherView(View):
     """
     机构教师列表页
@@ -277,6 +276,8 @@ class TeacherListView(View):
 
 class TeacherDetailView(View):
     def get(self, request, teacher_id):
+        if not request.user.is_authenticated():
+            return render(request, 'login.html')
         # 根据讲师id在数据库中找到对应讲师
         teacher = Teacher.objects.get(id=int(teacher_id))
 
