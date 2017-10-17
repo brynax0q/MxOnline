@@ -184,7 +184,10 @@ class ModifyPwdView(View):
 class UserInfoView(LoginRequiredMixin, View):
     # 用户个人信息
     def get(self, request):
-        return  render(request, 'usercenter-info.html', {})
+        current_page = "user_info"
+        return  render(request, 'usercenter-info.html', {
+            "current_page": current_page
+        })
 
     def post(self, request):
         user_info_form = UploadInfoForm(request.POST, instance=request.user)
@@ -270,9 +273,11 @@ class MycourseView(LoginRequiredMixin, View):
     我的课程
     """
     def get(self, request):
+        current_page = "mycourse"
         user_courses = UserCourse.objects.filter(user=request.user)
         return render(request, 'usercenter-mycourse.html', {
-            "user_courses": user_courses
+            "user_courses": user_courses,
+            "current_page": current_page
         })
 
 
@@ -282,6 +287,7 @@ class MyFavOrgView(LoginRequiredMixin, View):
     我收藏的课程机构
     """
     def get(self, request):
+        current_page = "myfav_org"
         org_list = []
         fav_orgs = UserFavorite.objects.filter(user=request.user, fav_type=2)
         for fav_org in fav_orgs:
@@ -290,7 +296,8 @@ class MyFavOrgView(LoginRequiredMixin, View):
             org = CourseOrg.objects.get(id=org_id)
             org_list.append(org)
         return render(request, 'usercenter-fav-org.html', {
-            "org_list": org_list
+            "org_list": org_list,
+            "current_page":current_page
         })
 
 
@@ -333,6 +340,7 @@ class MyMessageView(LoginRequiredMixin, View):
     我的消息
     """
     def get(self, request):
+        current_page = "mymessage"
         all_message = UserMessage.objects.filter(user=request.user.id)
         # 用户进入个人消息后清空未读消息的记录
         all_unread_messages = UserMessage.objects.filter(user=request.user.id, has_read=False)
@@ -350,7 +358,8 @@ class MyMessageView(LoginRequiredMixin, View):
         p = Paginator(all_message, 5, request=request)
         messages = p.page(page)
         return render(request, "usercenter-message.html", {
-            "messages": messages
+            "messages": messages,
+            "current_page": current_page
         })
 
 
