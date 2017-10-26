@@ -85,7 +85,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # 配置media处理器，自动将MEDIA_URL注册到html中
-                'django.core.context_processors.media'
+                #'django.core.context_processors.media',
+                'django.template.context_processors.media'
             ],
         },
     },

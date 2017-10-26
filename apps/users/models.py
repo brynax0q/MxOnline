@@ -28,7 +28,7 @@ class UserProfile(AbstractUser):
         verbose_name_plural = verbose_name
 
     # 重载为了打印自定义的字符串
-    def __unicode__(self):
+    def __str__(self):
         return self.username
 
     # 获取用户的未读消息的数量
@@ -48,7 +48,7 @@ class EmailVerifyRecord(models.Model):
     class Meta:
         verbose_name = u"邮箱验证码"
         verbose_name_plural = verbose_name
-    def __unicode__(self):
+    def __str__(self):
         return '{0}({1})'.format(self.code, self.email)
 
 
@@ -68,7 +68,7 @@ class Banner(models.Model):
         verbose_name = u"轮播图"
         verbose_name_plural = verbose_name
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
